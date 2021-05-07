@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="heliotrope">#FFBB86FC</color>
+    <color name="cello">#FF1F3A59</color>
+    <color name="kashmir_blue">#FF43658B</color>
+    <color name="steel_blue">#FF4E89AE</color>
+    <color name="burnt_sienna">#FFED6663</color>
+    <color name="atomic_tangerine">#FFFFA372</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
