@@ -29,15 +29,30 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-
+    // kotlin core
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "androidx.core:core-ktx:${coreKtxVersion}"
-    implementation "androidx.appcompat:appcompat:${appcompatVersion}"
-    implementation "com.google.android.material:material:${materialVersion}"
-    testImplementation "junit:junit:${junitVersion1}"
-    androidTestImplementation "androidx.test.ext:junit:${junitVersion}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoCoreVersion}"
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    // ui
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
+    // architecture component
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$androidLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$androidLifecycleExtensionVersion"
+    // kotlin coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion"
+    // testing
+    testImplementation "junit:junit:$junitVersion1"
+    androidTestImplementation "androidx.test.ext:junit:$junitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
 }
