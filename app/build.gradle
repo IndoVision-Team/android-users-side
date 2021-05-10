@@ -42,6 +42,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
+    implementation "com.google.android.gms:play-services-auth:$playServicesVersion"
     // architecture component
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidLifecycleVersion"
@@ -51,6 +52,7 @@ dependencies {
     // kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // testing
     testImplementation "junit:junit:$junitVersion1"
     androidTestImplementation "androidx.test.ext:junit:$junitVersion"
