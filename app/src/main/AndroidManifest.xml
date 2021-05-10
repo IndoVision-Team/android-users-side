@@ -8,11 +8,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Belanja">
+        <activity android:name=".ui.auth.AuthActivity"></activity>
         <activity
-            android:theme="@style/Theme.Belanja.NoActionBar"
-            android:name=".ui.splash.SplashActivity">
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/Theme.Belanja.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
