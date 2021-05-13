@@ -10,4 +10,5 @@
     <string name="sign_in_with">Sign in with</string>
     <string name="or">or</string>
     <string name="lost_password">Lost Password?</string>
+    <string name="sign_in_failed">Sign In Failed</string>
 </resources>

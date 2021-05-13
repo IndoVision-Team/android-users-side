@@ -95,23 +95,23 @@
         android:layout_height="58dp"
         android:layout_margin="@dimen/margin_padding_size_medium"
         android:backgroundTint="?attr/colorOnPrimary"
-        android:textColor="?attr/colorPrimary"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/lost_password"
+        android:textColor="?attr/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_text_input"
         app:layout_constraintWidth_percent="0.45" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_login"
-        app:layout_constraintWidth_percent="0.45"
         android:layout_width="0dp"
         android:layout_height="58dp"
         android:layout_margin="@dimen/margin_padding_size_medium"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_text_input" />
+        app:layout_constraintTop_toBottomOf="@+id/password_text_input"
+        app:layout_constraintWidth_percent="0.45" />
 
     <TextView
         android:id="@+id/label_or"
@@ -174,3 +174,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
