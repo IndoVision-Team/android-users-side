@@ -49,6 +49,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-common-java8:$androidLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$androidLifecycleExtensionVersion"
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     // kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion"
