@@ -10,4 +10,6 @@ data class ProductEntity(
     var description: String = "",
     var price: String = "",
     var imagePath: Array<String> = arrayOf("")
-) : Parcelable {}
+) : Parcelable {
+    var shopEntity = ShopEntity()
+}
