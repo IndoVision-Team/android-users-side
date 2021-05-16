@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class AdsEntitiy(
+data class AdsEntitiy(
     val id: String = "",
     val imagePath: String = ""
 ) : Parcelable {

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class ShopEntity(
+data class ShopEntity(
     val id: String = "",
     val name: String = "",
     val address: String = "",

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class EventEntity(
+data class EventEntity(
     val id: String = "",
     val title: String = "",
     val description: String = "",
