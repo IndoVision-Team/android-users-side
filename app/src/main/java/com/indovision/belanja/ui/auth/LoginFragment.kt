@@ -13,7 +13,9 @@ import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.indovision.belanja.R
+import com.indovision.belanja.util.UserPreference
 import com.indovision.belanja.databinding.FragmentLoginBinding
+import com.indovision.belanja.ui.dashboard.DashboardActivity
 
 class LoginFragment : Fragment() {
 
@@ -36,6 +38,8 @@ class LoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //configure google sign in
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail().build()
         mGoogleSignInClient = GoogleSignIn.getClient(context as Context, gso)
@@ -43,6 +47,8 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        //check existing google sign in account
         val account = GoogleSignIn.getLastSignedInAccount(context)
         if (account != null)
             successLogin(account)
@@ -70,6 +76,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun handleSignInGoogleAccountFromIntent(task: Task<GoogleSignInAccount>) {
+        //check intent result
         try {
             val account = task.getResult(ApiException::class.java) as GoogleSignInAccount
             successLogin(account)
@@ -84,14 +91,14 @@ class LoginFragment : Fragment() {
     }
 
     private fun successLogin(account: GoogleSignInAccount) {
-        Log.d(
-            LoginFragment::class.java.simpleName,
-            GoogleSignInStatusCodes.getStatusCodeString(GoogleSignInStatusCodes.SUCCESS)
-        )
-        Log.d(
-            LoginFragment::class.java.simpleName,
-            account.email.toString()
-        )
+        //save email user
+        val userPreference = UserPreference(activity as Context)
+        userPreference.setUserEmail(account.email.toString())
+
+        //start dashboard activity
+        val intent = Intent(activity, DashboardActivity::class.java)
+        activity?.startActivity(intent)
+        activity?.finish()
     }
 
     override fun onDestroy() {

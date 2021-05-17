@@ -1,4 +1,4 @@
-package com.indovision.belanja.ui.dashboard
+package com.indovision.belanja.ui.dashboard.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
