@@ -17,6 +17,9 @@ buildscript {
         navigationVersion = '2.3.5'
         dotIndicatorVersion = '4.2'
         retrofitVersion = '2.9.0'
+        activityVersion = '1.2.3'
+        glideVersion = '4.12.0'
+        okhttpVersion = '4.9.1'
     }
 
 //    ext.kotlin_version = "1.5.0-release-764"
