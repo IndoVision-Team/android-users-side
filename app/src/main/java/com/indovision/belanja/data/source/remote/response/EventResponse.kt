@@ -13,6 +13,14 @@ data class EventResponse(
 data class Event (
     @field: SerializedName("event_id")
     val id: String,
+    @field: SerializedName("event_title")
+    val title: String,
+    @field: SerializedName("event_description")
+    val description: String,
+    @field: SerializedName("event_time_begin")
+    val timeBegin: String,
+    @field: SerializedName("event_time_start")
+    val timeStart: String,
     @field: SerializedName("event_banner_path")
     val imagePath: String
 )

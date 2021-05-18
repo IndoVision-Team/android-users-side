@@ -35,8 +35,8 @@ class RemoteDataSource {
         })
     }
 
-    fun getProductRecommendations(id: String, callback: LoadProductRecommendationsCallback){
-        val client = ApiConfig.getApiService().getProductRecommendations(id)
+    fun getProductRecommendations(userId: String, callback: LoadProductRecommendationsCallback){
+        val client = ApiConfig.getApiService().getProductRecommendations(userId)
         client.enqueue(object : Callback<ProductResponse>{
             override fun onResponse(
                 call: Call<ProductResponse>,

@@ -15,5 +15,5 @@ interface ApiService {
     fun getAds() : Call<AdsResponse>
 
     @GET("products/{id}")
-    fun getProductRecommendations(@Path("id") id: String) : Call<ProductResponse>
+    fun getProductRecommendations(@Path("userId") id: String) : Call<ProductResponse>
 }
