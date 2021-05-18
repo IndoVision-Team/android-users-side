@@ -1,12 +1,14 @@
 package com.indovision.belanja.data.source
 
+import androidx.lifecycle.LiveData
 import com.indovision.belanja.data.AdsEntity
 import com.indovision.belanja.data.EventEntity
+import com.indovision.belanja.data.ProductEntity
 
 interface UserDataSource {
-    fun getAllEvent(): List<EventEntity>
+    fun getAllEvent(): LiveData<List<EventEntity>>
 
-    fun getAllAds(): List<AdsEntity>
+    fun getAllAds(): LiveData<List<AdsEntity>>
 
-    fun getAllProductRecommendation(userId: String)
+    fun getAllProductRecommendation(userId: String) : LiveData<List<ProductEntity>>
 }

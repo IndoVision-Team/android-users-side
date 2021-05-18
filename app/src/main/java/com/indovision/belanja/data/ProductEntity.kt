@@ -9,7 +9,7 @@ data class ProductEntity(
     var name: String = "",
     var description: String = "",
     var price: String = "",
-    var imagePath: Array<String> = arrayOf("")
+    var imagePath: Array<String> = arrayOf(""),
+    var shopEntity: ShopEntity = ShopEntity()
 ) : Parcelable {
-    var shopEntity = ShopEntity()
 }
