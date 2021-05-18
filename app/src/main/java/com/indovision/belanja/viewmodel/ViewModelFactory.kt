@@ -3,7 +3,6 @@ package com.indovision.belanja.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.indovision.belanja.data.source.UserRepository
-import com.indovision.belanja.viewmodel.DashboardViewModel
 import com.indovision.belanja.data.source.remote.RemoteDataSource
 
 class ViewModelFactory private constructor(private val userRepository: UserRepository) :
