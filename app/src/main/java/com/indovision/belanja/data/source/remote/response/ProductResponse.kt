@@ -6,7 +6,7 @@ data class ProductResponse(
     @field:SerializedName("message")
     val message: String,
     @field:SerializedName("data")
-    val events: List<Product>
+    val products: List<Product>
 )
 
 data class Product (
