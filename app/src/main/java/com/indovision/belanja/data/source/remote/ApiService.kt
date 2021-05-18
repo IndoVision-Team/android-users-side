@@ -8,5 +8,5 @@ interface ApiService {
     fun getEvents() : Call<EventResponse>
 
     @GET("products")
-    fun getRecommendationProducts() : Call<ProductResponse>
+    fun getProductRecommendations() : Call<ProductResponse>
 }
