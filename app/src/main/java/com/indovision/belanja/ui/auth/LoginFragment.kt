@@ -13,7 +13,7 @@ import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.indovision.belanja.R
-import com.indovision.belanja.util.UserPreference
+import com.indovision.belanja.data.source.local.UserPreference
 import com.indovision.belanja.databinding.FragmentLoginBinding
 import com.indovision.belanja.ui.dashboard.DashboardActivity
 

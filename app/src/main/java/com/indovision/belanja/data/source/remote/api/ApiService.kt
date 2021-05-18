@@ -1,4 +1,4 @@
-package com.indovision.belanja.data.source.remote
+package com.indovision.belanja.data.source.remote.api
 
 import retrofit2.Call
 import retrofit2.http.GET

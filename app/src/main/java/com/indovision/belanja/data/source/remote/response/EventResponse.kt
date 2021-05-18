@@ -1,4 +1,4 @@
-package com.indovision.belanja.data.source.remote
+package com.indovision.belanja.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
