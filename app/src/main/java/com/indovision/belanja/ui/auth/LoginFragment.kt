@@ -93,7 +93,7 @@ class LoginFragment : Fragment() {
     private fun successLogin(account: GoogleSignInAccount) {
         //save email user
         val userPreference = UserPreference(activity as Context)
-        userPreference.setUserEmail(account.email.toString())
+        userPreference.setUser(account.email.toString(), "")
 
         //start dashboard activity
         val intent = Intent(activity, DashboardActivity::class.java)
