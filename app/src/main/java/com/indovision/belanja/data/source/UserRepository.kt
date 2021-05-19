@@ -92,4 +92,28 @@ class UserRepository private constructor(private val remoteDataSource: RemoteDat
         })
         return productResult
     }
+
+    override fun getAllProductSearch(search: String): LiveData<List<ProductEntity>> {
+        val productResult = MutableLiveData<List<ProductEntity>>()
+        remoteDataSource.getProductSearch(search, object : RemoteDataSource.LoadProductSearchCallback{
+            override fun onAllProductSearchReceived(productSearch: List<Product>) {
+                val productList = ArrayList<ProductEntity>()
+                for(product in productSearch){
+                    val shop = ShopEntity(product.shop.id, product.shop.name,product.shop.address)
+                    productList.add(
+                        ProductEntity(
+                            product.id,
+                            product.name,
+                            product.description,
+                            product.price,
+                            product.imagePath,
+                            shop
+                        )
+                    )
+                }
+                productResult.postValue(productList)
+            }
+        })
+        return productResult
+    }
 }
