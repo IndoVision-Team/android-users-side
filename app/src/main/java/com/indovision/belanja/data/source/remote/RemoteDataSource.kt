@@ -73,6 +73,27 @@ class RemoteDataSource {
         })
     }
 
+    fun getProductSearch(search: String, callback: LoadProductSearchCallback){
+        val client = ApiConfig.getApiService().getProductRecommendations(search)
+        client.enqueue(object : Callback<ProductResponse>{
+            override fun onResponse(
+                call: Call<ProductResponse>,
+                response: Response<ProductResponse>
+            ) {
+                if(response.isSuccessful){
+                    val productResponse = response.body() as ProductResponse
+                    if(productResponse.message == "success")
+                        callback.onAllProductSearchReceived(productResponse.products)
+                }
+            }
+
+            override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                debugError(t)
+            }
+
+        })
+    }
+
     private fun debugError(t: Throwable) {
         Log.d(RemoteDataSource::class.java.simpleName, "onFailure: ${t.message}")
     }
@@ -87,5 +108,9 @@ class RemoteDataSource {
 
     interface LoadEventsCallback {
         fun onAllEventReceived(events: List<Event>)
+    }
+
+    interface LoadProductSearchCallback {
+        fun onAllProductSearchReceived(productSearch: List<Product>)
     }
 }
