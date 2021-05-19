@@ -6,6 +6,7 @@ import com.indovision.belanja.data.source.remote.response.ProductResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("events")
@@ -16,4 +17,7 @@ interface ApiService {
 
     @GET("products/{id}")
     fun getProductRecommendations(@Path("userId") id: String) : Call<ProductResponse>
+
+    @GET("products")
+    fun getProductSearch(@Query("search") search: String) : Call<ProductResponse>
 }
