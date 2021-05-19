@@ -7,7 +7,7 @@ import com.indovision.belanja.data.EventEntity
 import com.indovision.belanja.data.ProductEntity
 import com.indovision.belanja.data.source.UserRepository
 
-class DashboardViewModel(private val userRepository: UserRepository) : ViewModel() {
+class HomeViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun getEvents(): LiveData<List<EventEntity>> = userRepository.getAllEvent()
 
     fun getAds(): LiveData<List<AdsEntity>> = userRepository.getAllAds()
