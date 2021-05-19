@@ -4,8 +4,12 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class AdsEntity(
-    val id: String = "",
-    val imagePath: String = ""
+data class ProductEntity(
+    var id: String = "",
+    var name: String = "",
+    var description: String = "",
+    var price: String = "",
+    var imagePath: Array<String> = arrayOf(""),
+    var shopEntity: ShopEntity = ShopEntity()
 ) : Parcelable {
 }
