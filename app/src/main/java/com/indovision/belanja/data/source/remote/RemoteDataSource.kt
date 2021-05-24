@@ -94,6 +94,28 @@ class RemoteDataSource {
         })
     }
 
+    fun getProductDetail(productId: String, callback: LoadProductDetailCallback){
+        val client = ApiConfig.getApiService().getProductDetail(productId)
+        client.enqueue(object : Callback<DetailProductResponse>{
+            override fun onResponse(
+                call: Call<DetailProductResponse>,
+                response: Response<DetailProductResponse>
+            ) {
+                if(response.isSuccessful){
+                    val detailProductResponse = response.body() as DetailProductResponse
+                    if(detailProductResponse.message == "success")
+                        callback.onProductDetailReceived(detailProductResponse.data)
+                }
+            }
+
+            override fun onFailure(call: Call<DetailProductResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+
+        })
+    }
+
     private fun debugError(t: Throwable) {
         Log.d(RemoteDataSource::class.java.simpleName, "onFailure: ${t.message}")
     }
@@ -112,5 +134,9 @@ class RemoteDataSource {
 
     interface LoadProductSearchCallback {
         fun onAllProductSearchReceived(productSearch: List<Product>)
+    }
+
+    interface LoadProductDetailCallback {
+        fun onProductDetailReceived(productDetail: DetailProduct)
     }
 }
