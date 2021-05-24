@@ -9,14 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.indovision.belanja.data.EventEntity
 import com.indovision.belanja.data.source.local.UserPreference
 import com.indovision.belanja.data.source.remote.RemoteDataSource
 import com.indovision.belanja.databinding.FragmentHomeBinding
 import com.indovision.belanja.ui.dashboard.home.adapter.AdsPagerAdapter
 import com.indovision.belanja.ui.dashboard.home.adapter.EventPagerAdapter
 import com.indovision.belanja.ui.dashboard.home.adapter.ProductRecommendationAdapter
-import com.indovision.belanja.ui.dashboard.home.adapter.ProductRecommendationAdapter.ItemClickListener
 import com.indovision.belanja.ui.detail.DetailProductActivity
 import com.indovision.belanja.ui.detail.DetailProductActivity.Companion.EXTRA_ID
 import com.indovision.belanja.viewmodel.HomeViewModel
@@ -61,7 +59,7 @@ class HomeFragment : Fragment() {
 
         viewModel.getRecommendations(UserPreference(context as Context).getUserId())
             .observe(viewLifecycleOwner, {
-                val adapter = ProductRecommendationAdapter(it, object : ItemClickListener {
+                val adapter = ProductRecommendationAdapter(it, object : ItemProductClickListener {
                     override fun onItemClickListener(productId: String) {
                         val intent = Intent(context, DetailProductActivity::class.java)
                         intent.putExtra(EXTRA_ID, productId)

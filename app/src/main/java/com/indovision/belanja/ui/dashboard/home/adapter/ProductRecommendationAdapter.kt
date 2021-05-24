@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.indovision.belanja.data.ProductEntity
 import com.indovision.belanja.databinding.ItemProductListBinding
+import com.indovision.belanja.ui.dashboard.home.ItemProductClickListener
 
 class ProductRecommendationAdapter(
     private val listProduct: List<ProductEntity>,
-    private val callback: ItemClickListener) :
+    private val callback: ItemProductClickListener) :
     RecyclerView.Adapter<ProductRecommendationAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -43,10 +44,6 @@ class ProductRecommendationAdapter(
             }
         }
 
-    }
-
-    interface ItemClickListener {
-        fun onItemClickListener(productId: String)
     }
 
 }
