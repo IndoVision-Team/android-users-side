@@ -1,6 +1,7 @@
 package com.indovision.belanja.data.source.remote.api
 
 import com.indovision.belanja.data.source.remote.response.AdsResponse
+import com.indovision.belanja.data.source.remote.response.DetailProductResponse
 import com.indovision.belanja.data.source.remote.response.EventResponse
 import com.indovision.belanja.data.source.remote.response.ProductResponse
 import retrofit2.Call
@@ -20,4 +21,7 @@ interface ApiService {
 
     @GET("products")
     fun getProductSearch(@Query("search") search: String) : Call<ProductResponse>
+
+    @GET("products/{id}")
+    fun getProductDetail(@Path("productId") id: String) : Call<DetailProductResponse>
 }
