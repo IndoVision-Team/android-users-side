@@ -19,7 +19,7 @@ data class Product (
     @field: SerializedName("price_sell")
     val price: String,
     @field: SerializedName("image_path")
-    val imagePath: Array<String>,
+    val imagePath: String,
     @field: SerializedName("shop")
     val shop: Shop,
 )
