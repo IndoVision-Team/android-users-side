@@ -5,14 +5,14 @@ import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.indovision.belanja.R
-import com.indovision.belanja.databinding.ActivityDetailBinding
+import com.indovision.belanja.databinding.ActivityDetailProductBinding
 
-class DetailActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityDetailBinding
+class DetailProductActivity : AppCompatActivity() {
+    private lateinit var viewBinding: ActivityDetailProductBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivityDetailBinding.inflate(layoutInflater)
+        viewBinding = ActivityDetailProductBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
         setSupportActionBar(viewBinding.toolbar)
