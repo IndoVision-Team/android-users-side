@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.indovision.belanja.data.source.local.UserPreference
 import com.indovision.belanja.data.source.remote.RemoteDataSource
 import com.indovision.belanja.databinding.FragmentHomeBinding
+import com.indovision.belanja.ui.dashboard.ItemProductClickListener
 import com.indovision.belanja.ui.dashboard.home.adapter.AdsPagerAdapter
 import com.indovision.belanja.ui.dashboard.home.adapter.EventPagerAdapter
 import com.indovision.belanja.ui.dashboard.home.adapter.ProductRecommendationAdapter

@@ -6,8 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.indovision.belanja.data.ProductEntity
 import com.indovision.belanja.databinding.ItemProductGridBinding
+import com.indovision.belanja.ui.dashboard.ItemProductClickListener
 
-class SearchAdapter(private val productList: List<ProductEntity>) :
+class SearchAdapter(
+    private val productList: List<ProductEntity>,
+    private val callback: ItemProductClickListener
+) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
         val binding = ItemProductGridBinding.inflate(
@@ -34,8 +38,9 @@ class SearchAdapter(private val productList: List<ProductEntity>) :
                         .substringAfter("Kec.")
                         .substringBefore("Kab.")
                 productPrices.text = productEntity.price
-                Glide.with(itemView.context).load(productEntity.imagePath)
+                Glide.with(itemView.context).load(productEntity.imagePath[0])
                     .into(productImages)
+                itemView.setOnClickListener { callback.onItemClickListener(productEntity.id) }
             }
         }
 
