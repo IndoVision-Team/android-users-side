@@ -23,6 +23,12 @@ class ViewModelFactory private constructor(private val userRepository: UserRepos
             modelClass.isAssignableFrom(HomeViewModel::class.java)->{
                 return HomeViewModel(userRepository) as T
             }
+            modelClass.isAssignableFrom(SearchViewModel::class.java)->{
+                return SearchViewModel(userRepository) as T
+            }
+            modelClass.isAssignableFrom(DetailProductViewModel::class.java)->{
+                return DetailProductViewModel(userRepository) as T
+            }
             else -> throw Throwable("Unkown ViewModel class: "+ modelClass.name)
         }
     }
