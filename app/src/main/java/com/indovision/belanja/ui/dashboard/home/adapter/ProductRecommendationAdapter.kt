@@ -7,7 +7,9 @@ import com.bumptech.glide.Glide
 import com.indovision.belanja.data.ProductEntity
 import com.indovision.belanja.databinding.ItemProductListBinding
 
-class ProductRecommendationAdapter(private val listProduct: List<ProductEntity>) :
+class ProductRecommendationAdapter(
+    private val listProduct: List<ProductEntity>,
+    private val callback: ItemClickListener) :
     RecyclerView.Adapter<ProductRecommendationAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,18 +28,25 @@ class ProductRecommendationAdapter(private val listProduct: List<ProductEntity>)
 
     override fun getItemCount(): Int = listProduct.size
 
-    inner class ViewHolder(private val binding: ItemProductListBinding)
-        :RecyclerView.ViewHolder(binding.root){
-            fun bind(productEntity: ProductEntity){
-                with(binding){
-                    productTitle.text = productEntity.name
-                    productLocations.text = productEntity.shopEntity.address.
-                    substringAfter("Kec.").substringBefore("Kab.")
-                    Glide.with(itemView.context).load(productEntity.imagePath)
-                        .into(productImages)
-                }
+    inner class ViewHolder(private val binding: ItemProductListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(productEntity: ProductEntity) {
+            with(binding) {
+                productTitle.text = productEntity.name
+                productLocations.text =
+                    productEntity.shopEntity.address
+                        .substringAfter("Kec.")
+                        .substringBefore("Kab.")
+                Glide.with(itemView.context).load(productEntity.imagePath[0])
+                    .into(productImages)
+                itemView.setOnClickListener { callback.onItemClickListener(productEntity.id) }
             }
+        }
 
+    }
+
+    interface ItemClickListener {
+        fun onItemClickListener(productId: String)
     }
 
 }

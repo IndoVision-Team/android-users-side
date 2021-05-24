@@ -1,6 +1,7 @@
 package com.indovision.belanja.ui.dashboard.home
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +16,16 @@ import com.indovision.belanja.databinding.FragmentHomeBinding
 import com.indovision.belanja.ui.dashboard.home.adapter.AdsPagerAdapter
 import com.indovision.belanja.ui.dashboard.home.adapter.EventPagerAdapter
 import com.indovision.belanja.ui.dashboard.home.adapter.ProductRecommendationAdapter
+import com.indovision.belanja.ui.dashboard.home.adapter.ProductRecommendationAdapter.ItemClickListener
+import com.indovision.belanja.ui.detail.DetailProductActivity
+import com.indovision.belanja.ui.detail.DetailProductActivity.Companion.EXTRA_ID
 import com.indovision.belanja.viewmodel.HomeViewModel
 import com.indovision.belanja.viewmodel.ViewModelFactory
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding as FragmentHomeBinding
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +35,14 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val factory = ViewModelFactory.getInstance(RemoteDataSource())
-        val viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
 
+        getData()
+
+        return binding.root
+    }
+
+    private fun getData() {
         viewModel.getEvents().observe(viewLifecycleOwner, {
             val adapter = EventPagerAdapter(it)
             with(binding) {
@@ -50,7 +61,13 @@ class HomeFragment : Fragment() {
 
         viewModel.getRecommendations(UserPreference(context as Context).getUserId())
             .observe(viewLifecycleOwner, {
-                val adapter = ProductRecommendationAdapter(it)
+                val adapter = ProductRecommendationAdapter(it, object : ItemClickListener {
+                    override fun onItemClickListener(productId: String) {
+                        val intent = Intent(context, DetailProductActivity::class.java)
+                        intent.putExtra(EXTRA_ID, productId)
+                        startActivity(intent)
+                    }
+                })
                 with(binding) {
                     rvRecommendationList.adapter = adapter
                     rvRecommendationList.setHasFixedSize(true)
@@ -58,8 +75,6 @@ class HomeFragment : Fragment() {
                         LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 }
             })
-
-        return binding.root
     }
 
     override fun onDestroy() {
