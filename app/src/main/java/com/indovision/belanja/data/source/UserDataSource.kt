@@ -13,4 +13,6 @@ interface UserDataSource {
     fun getAllProductRecommendation(userId: String) : LiveData<List<ProductEntity>>
     
     fun getAllProductSearch(search: String) : LiveData<List<ProductEntity>>
+
+    fun getProductDetail(productId: String) : LiveData<ProductEntity>
 }
