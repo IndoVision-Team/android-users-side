@@ -36,4 +36,7 @@
         <item name="goIcon">@drawable/uicons_arrow_small_right</item>
         <item name="voiceIcon">@drawable/uicons_microphone</item>
     </style>
+    <style name="Widget.Belanja.CompoundButton.CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">?attr/colorPrimary</item>
+    </style>
 </resources>
