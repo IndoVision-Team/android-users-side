@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/margin_padding_size_small">
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cart_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:padding="@dimen/margin_padding_size_small"
+        android:theme="@style/Widget.Belanja.CompoundButton.CheckBox"
+        app:layout_constraintBottom_toBottomOf="@+id/cart_product_images"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/cart_product_images"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cart_checkbox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:background="@color/hint" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/product_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_padding_size_small"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat"
+        android:maxLines="1"
+        android:textColor="?attr/colorOnSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cart_product_images"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Product Title" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_qty_minus"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="@dimen/margin_padding_size_small"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/bg_button_qty"
+        android:src="@drawable/uicons_minus_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cart_qty"
+        app:layout_constraintTop_toBottomOf="@+id/cart_product_images" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cart_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/margin_padding_size_small"
+        android:textColor="?attr/colorOnSecondary"
+        android:fontFamily="@font/lalezar"
+        android:gravity="center"
+        android:minWidth="48dp"
+        android:padding="@dimen/margin_padding_size_small"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintBottom_toBottomOf="@+id/button_qty_minus"
+        app:layout_constraintEnd_toStartOf="@+id/button_qty_plus"
+        app:layout_constraintTop_toTopOf="@+id/button_qty_minus"
+        tools:text="10" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_qty_plus"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="@dimen/margin_padding_size_small"
+        android:background="@drawable/bg_button_qty"
+        android:src="@drawable/uicons_plus_small"
+        app:layout_constraintBottom_toBottomOf="@+id/cart_qty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cart_qty" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label_cart_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_padding_size_small"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat"
+        android:maxLines="2"
+        android:text="@string/price"
+        android:textColor="?attr/colorOnSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/cart_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cart_price" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cart_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_padding_size_small"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat_bold"
+        android:maxLines="1"
+        android:textColor="?attr/colorOnSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/cart_product_images"
+        app:layout_constraintEnd_toStartOf="@id/label_cart_subtotal"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/cart_product_images"
+        tools:text="Rp. 0.000.000,-" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label_cart_subtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_padding_size_small"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat"
+        android:maxLines="2"
+        android:text="@string/total"
+        android:textColor="?attr/colorOnSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/cart_subtotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cart_subtotal" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cart_subtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_padding_size_small"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat_bold"
+        android:maxLines="1"
+        android:textColor="?attr/colorOnSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/cart_product_images"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cart_product_images"
+        tools:text="Rp. 0.000.000,-" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_padding_size_small"
+        android:backgroundTint="?attr/colorSecondaryVariant"
+        android:drawableStart="@drawable/uicons_trash"
+        android:drawablePadding="@dimen/margin_padding_size_medium"
+        android:text="@string/delete"
+        android:textColor="?attr/colorOnPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_qty_minus"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_product_images" />
+</androidx.constraintlayout.widget.ConstraintLayout>
