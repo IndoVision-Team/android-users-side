@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.indovision.belanja">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -9,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Belanja.NoActionBar">
         <activity android:name=".ui.account.AccountActivity" />
-        <activity android:name=".ui.detail.DetailActivity" />
+        <activity android:name=".ui.detail.DetailProductActivity" />
         <activity android:name=".ui.dashboard.DashboardActivity" />
         <activity android:name=".ui.auth.AuthActivity" />
         <activity android:name=".ui.splash.SplashActivity">

@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.AppBarLayout
 import com.indovision.belanja.R
 import com.indovision.belanja.databinding.ActivityDashboardBinding
+import com.indovision.belanja.ui.dashboard.home.HomeFragmentDirections
 import kotlin.math.abs
 
 class DashboardActivity : AppCompatActivity() {
@@ -41,18 +44,36 @@ class DashboardActivity : AppCompatActivity() {
                 }
             }
         )
+        setUpSearchView(menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun setUpSearchView(menu: Menu?) {
         // setup search view
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
         val searchView = menu?.findItem(R.id.search)?.actionView as SearchView
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.queryHint = "Search"
 
+        //setup listener
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val toSearchFragment = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+                toSearchFragment.searchText = query.toString()
+                Navigation.createNavigateOnClickListener(toSearchFragment)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
         // change search view text color
         val searchAutoComplete: SearchView.SearchAutoComplete =
             searchView.findViewById(androidx.appcompat.R.id.search_src_text)
-        searchAutoComplete.setTextColor(resources.getColor(R.color.cello))
-        searchAutoComplete.setHintTextColor(resources.getColor(R.color.hint))
-
-        return super.onCreateOptionsMenu(menu)
+        searchAutoComplete.setTextColor(ContextCompat.getColor(applicationContext, R.color.cello))
+        searchAutoComplete.setHintTextColor(ContextCompat.getColor(applicationContext, R.color.hint))
     }
 }
