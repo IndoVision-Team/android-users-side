@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Belanja</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
@@ -11,4 +10,8 @@
     <string name="or">or</string>
     <string name="lost_password">Lost Password?</string>
     <string name="sign_in_failed">Sign In Failed</string>
+    <string name="pay">Pay</string>
+    <string name="total">Total</string>
+    <string name="delete">Delete</string>
+    <string name="price">Price</string>
 </resources>
