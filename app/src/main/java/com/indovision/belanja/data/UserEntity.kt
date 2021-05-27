@@ -11,4 +11,5 @@ data class UserEntity(
     var gender: String,
     var address: String,
     var email: String,
+    var imagePath: String
 ):Parcelable

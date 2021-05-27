@@ -171,7 +171,8 @@ class UserRepository private constructor(private val remoteDataSource: RemoteDat
                         profileResponse.lastName,
                         profileResponse.gender,
                         profileResponse.address,
-                        profileResponse.email
+                        profileResponse.email,
+                        profileResponse.imagePath
                     )
                 )
             }

@@ -15,6 +15,8 @@ data class ProfileResponse(
     var gender: String,
     @field:SerializedName("user_address")
     var address: String,
-    @field:SerializedName("user_id")
+    @field:SerializedName("user_email")
     var email: String,
+    @field:SerializedName("user_photo")
+    var imagePath: String
 )
