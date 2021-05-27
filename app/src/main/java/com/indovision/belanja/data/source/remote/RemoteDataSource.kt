@@ -116,8 +116,33 @@ class RemoteDataSource {
         })
     }
 
+    fun getAccount(callback: LoadAccountCallback){
+        val client = ApiConfig.getApiService().getAccount()
+        client.enqueue(object : Callback<AccountResponse>{
+            override fun onResponse(
+                call: Call<AccountResponse>,
+                response: Response<AccountResponse>
+            ) {
+                if(response.isSuccessful){
+                    val accountResponse = response.body() as AccountResponse
+                    if(accountResponse.message == "success")
+                        callback.onAccountReceived(accountResponse)
+                }
+            }
+
+            override fun onFailure(call: Call<AccountResponse>, t: Throwable) {
+                debugError(t)
+            }
+
+        })
+    }
+
     private fun debugError(t: Throwable) {
         Log.d(RemoteDataSource::class.java.simpleName, "onFailure: ${t.message}")
+    }
+
+    interface LoadAccountCallback {
+        fun onAccountReceived(accountResponse: AccountResponse)
     }
 
     interface LoadAdsCallback {
