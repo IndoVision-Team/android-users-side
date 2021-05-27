@@ -151,8 +151,8 @@ class UserRepository private constructor(private val remoteDataSource: RemoteDat
                 accountResult.postValue(
                     AccountEntity(
                         accountResponse.id,
-                        accountResponse.first_name,
-                        accountResponse.last_name
+                        accountResponse.firstName,
+                        accountResponse.lastName
                     )
                 )
             }
