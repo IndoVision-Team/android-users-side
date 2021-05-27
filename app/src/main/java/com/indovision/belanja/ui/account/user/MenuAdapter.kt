@@ -8,7 +8,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.indovision.belanja.data.MenuEntity
 import com.indovision.belanja.databinding.ItemUserMenuBinding
 
-class MenuAdapter(private val menuList: ArrayList<MenuEntity>) :
+class MenuAdapter(private val menuList: ArrayList<MenuEntity>, private val callback: ItemMenuClickListener) :
     RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuAdapter.ViewHolder {
         val binding =
@@ -29,6 +29,12 @@ class MenuAdapter(private val menuList: ArrayList<MenuEntity>) :
                 Glide.with(itemView.context).apply { RequestOptions.overrideOf(54, 54) }
                     .load(menuEntity.iconPath).into(menuIcon)
             }
+
+            itemView.setOnClickListener { callback.onItemMenuClick(menuEntity.id) }
         }
+    }
+
+    interface ItemMenuClickListener {
+        fun onItemMenuClick(id: String)
     }
 }
