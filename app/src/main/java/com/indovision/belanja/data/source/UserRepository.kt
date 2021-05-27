@@ -2,20 +2,15 @@ package com.indovision.belanja.data.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.indovision.belanja.data.AdsEntity
-import com.indovision.belanja.data.EventEntity
-import com.indovision.belanja.data.ProductEntity
-import com.indovision.belanja.data.ShopEntity
+import com.indovision.belanja.data.*
 import com.indovision.belanja.data.source.remote.RemoteDataSource
 import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadEventsCallback
 import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadAdsCallback
 import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadProductRecommendationsCallback
 import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadProductSearchCallback
 import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadProductDetailCallback
-import com.indovision.belanja.data.source.remote.response.Ads
-import com.indovision.belanja.data.source.remote.response.DetailProduct
-import com.indovision.belanja.data.source.remote.response.Event
-import com.indovision.belanja.data.source.remote.response.Product
+import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadAccountCallback
+import com.indovision.belanja.data.source.remote.response.*
 
 class UserRepository private constructor(private val remoteDataSource: RemoteDataSource) :
     UserDataSource {
@@ -127,7 +122,11 @@ class UserRepository private constructor(private val remoteDataSource: RemoteDat
         val productResult = MutableLiveData<ProductEntity>()
         remoteDataSource.getProductDetail(productId, object : LoadProductDetailCallback {
             override fun onProductDetailReceived(productDetail: DetailProduct) {
-                val shop = ShopEntity(productDetail.shop.id, productDetail.shop.name, productDetail.shop.address)
+                val shop = ShopEntity(
+                    productDetail.shop.id,
+                    productDetail.shop.name,
+                    productDetail.shop.address
+                )
                 productResult.postValue(
                     ProductEntity(
                         productDetail.id,
@@ -143,5 +142,21 @@ class UserRepository private constructor(private val remoteDataSource: RemoteDat
             }
         })
         return productResult
+    }
+
+    override fun getAccount(userId: String): LiveData<AccountEntity> {
+        val accountResult = MutableLiveData<AccountEntity>()
+        remoteDataSource.getAccount(userId, object : LoadAccountCallback {
+            override fun onAccountReceived(accountResponse: AccountResponse) {
+                accountResult.postValue(
+                    AccountEntity(
+                        accountResponse.id,
+                        accountResponse.first_name,
+                        accountResponse.last_name
+                    )
+                )
+            }
+        })
+        return accountResult
     }
 }

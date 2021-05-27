@@ -22,6 +22,6 @@ interface ApiService {
     @GET("products/{id}")
     fun getProductDetail(@Path("productId") id: String) : Call<DetailProductResponse>
 
-    @GET("account")
-    fun getAccount() : Call<AccountResponse>
+    @GET("account/{id}")
+    fun getAccount(@Path("accountId") id: String) : Call<AccountResponse>
 }

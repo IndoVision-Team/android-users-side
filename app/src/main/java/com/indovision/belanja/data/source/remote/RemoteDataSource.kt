@@ -116,8 +116,8 @@ class RemoteDataSource {
         })
     }
 
-    fun getAccount(callback: LoadAccountCallback){
-        val client = ApiConfig.getApiService().getAccount()
+    fun getAccount(userId: String, callback: LoadAccountCallback){
+        val client = ApiConfig.getApiService().getAccount(userId)
         client.enqueue(object : Callback<AccountResponse>{
             override fun onResponse(
                 call: Call<AccountResponse>,
