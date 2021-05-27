@@ -22,4 +22,6 @@ internal class UserPreference(context: Context) {
 
     fun getUserId(): String = preference.getString(USER_ID, "") as String
 
+    fun clearAll(){ preference.edit().clear().apply() }
+
 }

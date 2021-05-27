@@ -9,6 +9,8 @@ data class AccountResponse (
     var id: String,
     @field:SerializedName("user_first_name")
     var first_name: String,
+    @field:SerializedName("user_address")
+    var address: String,
     @field:SerializedName("user_last_name")
     var last_name: String
 )
