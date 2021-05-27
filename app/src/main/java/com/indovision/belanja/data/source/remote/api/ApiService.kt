@@ -24,4 +24,7 @@ interface ApiService {
 
     @GET("account/{id}")
     fun getAccount(@Path("accountId") id: String) : Call<AccountResponse>
+
+    @GET("profile/{id}")
+    fun getProfile(@Path("userId") id: String) : Call<ProfileResponse>
 }
