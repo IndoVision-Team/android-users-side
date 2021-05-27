@@ -1,9 +1,6 @@
 package com.indovision.belanja.data.source.remote.api
 
-import com.indovision.belanja.data.source.remote.response.AdsResponse
-import com.indovision.belanja.data.source.remote.response.DetailProductResponse
-import com.indovision.belanja.data.source.remote.response.EventResponse
-import com.indovision.belanja.data.source.remote.response.ProductResponse
+import com.indovision.belanja.data.source.remote.response.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -24,4 +21,7 @@ interface ApiService {
 
     @GET("products/{id}")
     fun getProductDetail(@Path("productId") id: String) : Call<DetailProductResponse>
+
+    @GET("account")
+    fun getAccount() : Call<AccountResponse>
 }
