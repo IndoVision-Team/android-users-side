@@ -5,9 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ShopEntity(
-    val id: String = "",
-    val name: String = "",
-    val address: String = "",
-    val imagePath: String = ""
+    var id: String = "",
+    var name: String = "",
+    var address: String = "",
+    var imagePath: String = ""
 ):Parcelable {
 }

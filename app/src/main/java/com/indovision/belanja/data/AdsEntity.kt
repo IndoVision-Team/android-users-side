@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AdsEntity(
-    val id: String = "",
-    val imagePath: String = ""
+    var id: String = "",
+    var imagePath: String = ""
 ) : Parcelable {
 }

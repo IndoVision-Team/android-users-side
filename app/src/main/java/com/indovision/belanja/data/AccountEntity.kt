@@ -5,8 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AccountEntity(
-    val id: String = "",
-    val address: String = "",
-    val firstName: String = "",
-    val lastName: String = ""
+    var id: String = "",
+    var address: String = "",
+    var firstName: String = "",
+    var lastName: String = ""
 ):Parcelable

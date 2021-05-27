@@ -5,10 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class EventEntity(
-    val id: String = "",
-    val title: String = "",
-    val description: String = "",
-    val timeBegin: String = "",
-    val timeStart: String = "",
-    val imagePath: String = ""
+    var id: String = "",
+    var title: String = "",
+    var description: String = "",
+    var timeBegin: String = "",
+    var timeStart: String = "",
+    var imagePath: String = ""
 ): Parcelable {}

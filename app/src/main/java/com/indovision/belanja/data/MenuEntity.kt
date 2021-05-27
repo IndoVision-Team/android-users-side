@@ -1,7 +1,7 @@
 package com.indovision.belanja.data
 
 data class MenuEntity (
-    val id: String = "",
-    val name: String = "",
-    val iconPath: String = ""
+    var id: String = "",
+    var name: String = "",
+    var iconPath: String = ""
 )
