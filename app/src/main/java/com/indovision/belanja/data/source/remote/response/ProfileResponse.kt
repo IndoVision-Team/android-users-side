@@ -3,6 +3,8 @@ package com.indovision.belanja.data.source.remote.response
 import com.google.gson.annotations.SerializedName
 
 data class ProfileResponse(
+    @field:SerializedName("message")
+    var message: String,
     @field:SerializedName("user_id")
     var id: String,
     @field:SerializedName("user_first_name")

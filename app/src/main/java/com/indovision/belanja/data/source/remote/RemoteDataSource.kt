@@ -74,7 +74,7 @@ class RemoteDataSource {
     }
 
     fun getProductSearch(search: String, callback: LoadProductSearchCallback){
-        val client = ApiConfig.getApiService().getProductRecommendations(search)
+        val client = ApiConfig.getApiService().getProductSearch(search)
         client.enqueue(object : Callback<ProductResponse>{
             override fun onResponse(
                 call: Call<ProductResponse>,
@@ -137,8 +137,34 @@ class RemoteDataSource {
         })
     }
 
+    fun getProfile(userId: String, callback: LoadProfileCallback){
+        val client = ApiConfig.getApiService().getProfile(userId)
+        client.enqueue(object : Callback<ProfileResponse>{
+            override fun onResponse(
+                call: Call<ProfileResponse>,
+                response: Response<ProfileResponse>
+            ) {
+                if(response.isSuccessful){
+                    val profileResponse = response.body() as ProfileResponse
+                    if(profileResponse.message == "success")
+                        callback.onProfileReceived(profileResponse)
+                }
+            }
+
+            override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                debugError(t)
+            }
+
+
+        })
+    }
+
     private fun debugError(t: Throwable) {
         Log.d(RemoteDataSource::class.java.simpleName, "onFailure: ${t.message}")
+    }
+
+    interface LoadProfileCallback {
+        fun onProfileReceived(profileResponse: ProfileResponse)
     }
 
     interface LoadAccountCallback {
