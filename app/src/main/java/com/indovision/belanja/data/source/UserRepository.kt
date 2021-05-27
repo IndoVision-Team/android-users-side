@@ -159,4 +159,23 @@ class UserRepository private constructor(private val remoteDataSource: RemoteDat
         })
         return accountResult
     }
+
+    override fun getProfile(userId: String): LiveData<UserEntity> {
+        val profileResult = MutableLiveData<UserEntity>()
+        remoteDataSource.getProfile(userId, object : RemoteDataSource.LoadProfileCallback {
+            override fun onProfileReceived(profileResponse: ProfileResponse) {
+                profileResult.postValue(
+                    UserEntity(
+                        profileResponse.id,
+                        profileResponse.firstName,
+                        profileResponse.lastName,
+                        profileResponse.gender,
+                        profileResponse.address,
+                        profileResponse.email
+                    )
+                )
+            }
+        })
+        return profileResult
+    }
 }

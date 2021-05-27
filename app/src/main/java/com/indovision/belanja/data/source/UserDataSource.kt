@@ -1,10 +1,7 @@
 package com.indovision.belanja.data.source
 
 import androidx.lifecycle.LiveData
-import com.indovision.belanja.data.AccountEntity
-import com.indovision.belanja.data.AdsEntity
-import com.indovision.belanja.data.EventEntity
-import com.indovision.belanja.data.ProductEntity
+import com.indovision.belanja.data.*
 
 interface UserDataSource {
     fun getAllEvent(): LiveData<List<EventEntity>>
@@ -18,4 +15,6 @@ interface UserDataSource {
     fun getProductDetail(productId: String) : LiveData<ProductEntity>
 
     fun getAccount(userId: String): LiveData<AccountEntity>
+
+    fun getProfile(userId: String): LiveData<UserEntity>
 }
