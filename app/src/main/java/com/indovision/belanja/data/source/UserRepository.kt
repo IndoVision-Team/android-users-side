@@ -196,7 +196,8 @@ class UserRepository private constructor(private val remoteDataSource: RemoteDat
                                 cartResponse.id,
                                 cart.name,
                                 cart.price,
-                                cart.quantity
+                                cart.quantity,
+                                cart.imagePath
                             )
                         )
                     }

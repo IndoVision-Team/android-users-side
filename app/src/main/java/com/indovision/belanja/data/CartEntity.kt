@@ -10,5 +10,6 @@ data class CartEntity(
     var cartid: String,
     var name: String,
     var price: String,
-    var quantity: String
+    var quantity: String,
+    var imagePath: String
 ):Parcelable

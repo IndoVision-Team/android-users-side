@@ -22,6 +22,8 @@ data class CartItem(
     var name: String,
     @field:SerializedName("item_price")
     var price: String,
+    @field:SerializedName("image_path")
+    var imagePath: String,
     @field:SerializedName("item_quantity")
     var quantity: String
 )
