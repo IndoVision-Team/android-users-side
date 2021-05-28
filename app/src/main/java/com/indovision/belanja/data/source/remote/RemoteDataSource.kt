@@ -159,8 +159,29 @@ class RemoteDataSource {
         })
     }
 
+    fun getCart(userId: String, callback: LoadCartCallback){
+        val client = ApiConfig.getApiService().getCart(userId)
+        client.enqueue(object : Callback<CartResponse>{
+            override fun onResponse(call: Call<CartResponse>, response: Response<CartResponse>) {
+                if(response.isSuccessful){
+                    val cartResponse = response.body() as CartResponse
+                    if(cartResponse.message == "success")
+                        callback.onAllCartItemReceived(cartResponse.cartItems)
+                }
+            }
+
+            override fun onFailure(call: Call<CartResponse>, t: Throwable) {
+                debugError(t)
+            }
+        })
+    }
+
     private fun debugError(t: Throwable) {
         Log.d(RemoteDataSource::class.java.simpleName, "onFailure: ${t.message}")
+    }
+
+    interface LoadCartCallback {
+        fun onAllCartItemReceived(cartItems: List<CartItem>)
     }
 
     interface LoadProfileCallback {
