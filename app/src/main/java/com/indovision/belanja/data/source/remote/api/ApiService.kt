@@ -27,4 +27,7 @@ interface ApiService {
 
     @GET("profile/{id}")
     fun getProfile(@Path("userId") id: String) : Call<ProfileResponse>
+
+    @GET("cart/{id}")
+    fun getCart(@Path("userId") id: String) : Call<CartResponse>
 }
