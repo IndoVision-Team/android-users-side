@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class CartResponse(
     @field:SerializedName("message")
     var message: String,
+    @field:SerializedName("cart_id")
+    var id: String,
     @field:SerializedName("cart_user_id")
     var userId: String,
     @field:SerializedName("cart_status")

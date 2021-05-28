@@ -17,4 +17,6 @@ interface UserDataSource {
     fun getAccount(userId: String): LiveData<AccountEntity>
 
     fun getProfile(userId: String): LiveData<UserEntity>
+
+    fun getCart(userId: String): LiveData<List<CartEntity>>
 }

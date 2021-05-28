@@ -166,7 +166,7 @@ class RemoteDataSource {
                 if(response.isSuccessful){
                     val cartResponse = response.body() as CartResponse
                     if(cartResponse.message == "success")
-                        callback.onAllCartItemReceived(cartResponse.cartItems)
+                        callback.onAllCartItemReceived(cartResponse)
                 }
             }
 
@@ -181,7 +181,7 @@ class RemoteDataSource {
     }
 
     interface LoadCartCallback {
-        fun onAllCartItemReceived(cartItems: List<CartItem>)
+        fun onAllCartItemReceived(cartResponse: CartResponse)
     }
 
     interface LoadProfileCallback {

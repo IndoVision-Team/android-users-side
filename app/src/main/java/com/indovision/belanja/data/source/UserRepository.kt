@@ -10,6 +10,7 @@ import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadProductRec
 import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadProductSearchCallback
 import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadProductDetailCallback
 import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadAccountCallback
+import com.indovision.belanja.data.source.remote.RemoteDataSource.LoadCartCallback
 import com.indovision.belanja.data.source.remote.response.*
 
 class UserRepository private constructor(private val remoteDataSource: RemoteDataSource) :
@@ -178,5 +179,30 @@ class UserRepository private constructor(private val remoteDataSource: RemoteDat
             }
         })
         return profileResult
+    }
+
+    override fun getCart(userId: String): LiveData<List<CartEntity>> {
+        val cartResult = MutableLiveData<List<CartEntity>>()
+        remoteDataSource.getCart(
+            userId,
+            object : LoadCartCallback {
+                override fun onAllCartItemReceived(cartResponse: CartResponse) {
+                    val cartList = ArrayList<CartEntity>()
+                    val cartItems = cartResponse.cartItems
+                    for (cart in cartItems) {
+                        cartList.add(
+                            CartEntity(
+                                cart.id,
+                                cartResponse.id,
+                                cart.name,
+                                cart.price,
+                                cart.quantity
+                            )
+                        )
+                    }
+                    cartResult.postValue(cartList)
+                }
+            })
+        return cartResult
     }
 }
